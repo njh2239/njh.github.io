@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Njhyuk&#39;s Dev Note">
 <meta property="og:description" content="브라우저에서 서버와 통신하기 위해 폼을 사용합니다.사용자가 입력한 정보를 폼에 입력하여 전송하면 입력한 데이터가 웹서버로 전달되어 처리됩니다. 1234&amp;lt;form action=&quot;/api/save-file&quot; method=&quot;post&quot;&amp;gt;  &amp;lt;input type=&quot;text&quot; name=&quot;text&quot; value=&quot;Hello 안녕하세요&quot;&amp;gt;  &amp;lt;b">
 <meta property="og:locale" content="jo">
-<meta property="og:updated_time" content="2019-05-24T05:25:38.541Z">
+<meta property="og:updated_time" content="2019-05-24T05:51:35.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Form 파일전송을 위해 enctype을 왜 지정해야 할까?">
 <meta name="twitter:description" content="브라우저에서 서버와 통신하기 위해 폼을 사용합니다.사용자가 입력한 정보를 폼에 입력하여 전송하면 입력한 데이터가 웹서버로 전달되어 처리됩니다. 1234&amp;lt;form action=&quot;/api/save-file&quot; method=&quot;post&quot;&amp;gt;  &amp;lt;input type=&quot;text&quot; name=&quot;text&quot; value=&quot;Hello 안녕하세요&quot;&amp;gt;  &amp;lt;b">
@@ -93,7 +93,7 @@
       
         <p>브라우저에서 서버와 통신하기 위해 폼을 사용합니다.<br>사용자가 입력한 정보를 폼에 입력하여 전송하면 입력한 데이터가 웹서버로 전달되어 처리됩니다.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/api/save-file"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"Hello 안녕하세요"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>전송<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>단순 정보뿐만 아니라 파일도 추가로 첨부하려면 익히 알고 있듯이, form 태그에 <code>enctype=&quot;multipart/form-data&quot;</code> 속성을 추가하면 파일을 웹서버에 전송할 수 있었습니다.<br>하지만 해당 속성은 왜 기본으로 지정되어 있지 않고 별도로 지정해야 할까요?<br>이번 시간에는 당연 하게만 알고 있던 enctype을 폼에 왜 추가해야 하는지 알아보도록 하겠습니다.</p>
+<p>파일을 전송하려면 form 태그에 <code>enctype=&quot;multipart/form-data&quot;</code> 속성을 추가해야 파일을 웹서버에 전송할 수 있습니다.<br>하지만 해당 속성은 왜 기본으로 지정되어 있지 않고 별도로 지정해야 할까요?<br>이번 시간에는 당연 하게만 알고 있던 enctype을 폼에 왜 추가해야 하는지 알아보도록 하겠습니다.</p>
 <h2 id="HTTP-Header"><a href="#HTTP-Header" class="headerlink" title="HTTP Header"></a>HTTP Header</h2><p>HTTP 헤더는 사용자의 브라우저와 웹 서버가 요청 또는 응답으로 부가적인 정보를 전송할 수 있도록 해줍니다.<br>폼에 입력한 enctype은 HTTP 헤더의 내용 중 Content-type 을 수정하는 것이죠.</p>
 <pre><code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
 Accept-Encoding: gzip, deflate, br
@@ -130,7 +130,7 @@ Hello 안녕하세요
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://njhyuk.github.io/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/" data-id="cjw1n6p9y0001i15rxu0d3ohj" class="article-share-link">Share</a>
+      <a data-url="http://njhyuk.github.io/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/" data-id="cjw1n73z70000jc5r4mr2jzpf" class="article-share-link">Share</a>
       
       
     </footer>
