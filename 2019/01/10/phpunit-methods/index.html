@@ -7,18 +7,18 @@
   
   <title>PHPUnit 메소드 알아보기 | Njhyuk&#39;s Dev Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="안녕하세요.오늘은 지난 시간에 포스팅 유닛 테스트를 시작해보자에 이어,PHPUnit의 많이 사용하는 메소드 몇가지를 알아보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 12345678910111213&amp;">
+  <meta name="description" content="안녕하세요.오늘은 지난 시간에 포스팅한 유닛 테스트를 시작해보자에 이어, PHPUnit의 많이 사용하는 메소드 몇가지를 알아 보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 123456789101112">
 <meta name="keywords" content="back-end, developer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHPUnit 메소드 알아보기">
 <meta property="og:url" content="http://njhyuk.github.io/2019/01/10/phpunit-methods/index.html">
 <meta property="og:site_name" content="Njhyuk&#39;s Dev Note">
-<meta property="og:description" content="안녕하세요.오늘은 지난 시간에 포스팅 유닛 테스트를 시작해보자에 이어,PHPUnit의 많이 사용하는 메소드 몇가지를 알아보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 12345678910111213&amp;">
+<meta property="og:description" content="안녕하세요.오늘은 지난 시간에 포스팅한 유닛 테스트를 시작해보자에 이어, PHPUnit의 많이 사용하는 메소드 몇가지를 알아 보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 123456789101112">
 <meta property="og:locale" content="jo">
-<meta property="og:updated_time" content="2019-01-10T08:01:14.620Z">
+<meta property="og:updated_time" content="2019-01-10T08:22:14.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHPUnit 메소드 알아보기">
-<meta name="twitter:description" content="안녕하세요.오늘은 지난 시간에 포스팅 유닛 테스트를 시작해보자에 이어,PHPUnit의 많이 사용하는 메소드 몇가지를 알아보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 12345678910111213&amp;">
+<meta name="twitter:description" content="안녕하세요.오늘은 지난 시간에 포스팅한 유닛 테스트를 시작해보자에 이어, PHPUnit의 많이 사용하는 메소드 몇가지를 알아 보려고 합니다. assertTrue전달한 $condition 이 true 인지 체크 합니다. 1assertTrue(bool $condition[, string $message = &amp;apos;&amp;apos;]) 123456789101112">
   
     <link rel="alternate" href="/atom.xml" title="Njhyuk&#39;s Dev Note" type="application/atom+xml">
   
@@ -91,7 +91,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>안녕하세요.<br>오늘은 지난 시간에 포스팅 <a href="https://blog.naver.com/dndlab/221363581029" target="_blank" rel="noopener">유닛 테스트를 시작해보자</a>에 이어,<br>PHPUnit의 많이 사용하는 메소드 몇가지를 알아보려고 합니다.</p>
+        <p>안녕하세요.<br>오늘은 지난 시간에 포스팅한 <a href="https://njhyuk.github.io/2019/01/10/phpunit-start/">유닛 테스트를 시작해보자</a>에 이어, PHPUnit의 많이 사용하는 메소드 몇가지를 알아 보려고 합니다.</p>
 <h2 id="assertTrue"><a href="#assertTrue" class="headerlink" title="assertTrue"></a>assertTrue</h2><p>전달한 $condition 이 true 인지 체크 합니다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assertTrue(bool $condition[, string $message = &apos;&apos;])</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Tests</span>\<span class="title">Feature</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Tests</span>\<span class="title">TestCase</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testExample</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertTrue(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -104,8 +104,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assertEquals(mixed $expected, mixed $actual[, string $message = &apos;&apos;])</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Tests</span>\<span class="title">Feature</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Tests</span>\<span class="title">TestCase</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testExample</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertEquals(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>assertNotEquals() 메소드는 이와 정반대의 역할을 수행합니다.</p>
-<h2 id="assertSame"><a href="#assertSame" class="headerlink" title="assertSame"></a>assertSame</h2><p>테스트 결과로 예측한 $expected가 $actual과 같은 결과값인지 체크 합니다.</p>
-<p><em>assertEquals 는 두 값이 같은지를 비교하나, assertSame은 비교할 두 대상이 같은 주소값인지 비교합니다.</em></p>
+<h2 id="assertSame"><a href="#assertSame" class="headerlink" title="assertSame"></a>assertSame</h2><p>테스트 결과로 예측한 $expected가 $actual과 같은 결과값인지 체크 합니다.<br><strong>assertEquals 는 두 값이 같은지를 비교하나, assertSame은 비교할 두 대상이 같은 주소값인지 비교합니다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assertSame(mixed $expected, mixed $actual[, string $message = &apos;&apos;])</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SameTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testFailure</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;assertSame(<span class="string">'2204'</span>, <span class="number">2204</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>assertNotSame() 메소드는 이와 정반대의 역할을 수행합니다.</p>
@@ -118,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://njhyuk.github.io/2019/01/10/phpunit-methods/" data-id="cjqqbpew90001v45rmx4lmz0y" class="article-share-link">Share</a>
+      <a data-url="http://njhyuk.github.io/2019/01/10/phpunit-methods/" data-id="cjw1mipe60001e35rq7bb7bo1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,6 +125,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Form에서 enctype을 왜 지정해야 할까?
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/10/phpunit-start/" id="article-nav-older" class="article-nav-link-wrap">
@@ -154,7 +162,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -165,6 +173,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/">Form에서 enctype을 왜 지정해야 할까?</a>
+          </li>
         
           <li>
             <a href="/2019/01/10/phpunit-methods/">PHPUnit 메소드 알아보기</a>
