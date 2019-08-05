@@ -1,100 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>유닛 테스트를 시작 해보자 | Njhyuk&#39;s Dev Note</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다. 유닛 테스트위키 백과 에서는 유닛테스트를 다음">
+<!DOCTYPE html><html lang="jo"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PHPUnit 1부 - 유닛 테스트를 시작 해보자 | JunHyuk's Dev Note</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/atom-one-dark.css"><link rel="canonical" href="http://njhyuk.github.io/2019/01/10/phpunit-start/">
+<meta name="description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기…">
 <meta name="keywords" content="back-end, developer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="유닛 테스트를 시작 해보자">
-<meta property="og:url" content="http://njhyuk.github.io/2019/01/10/phpunit-start/index.html">
-<meta property="og:site_name" content="Njhyuk&#39;s Dev Note">
-<meta property="og:description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다. 유닛 테스트위키 백과 에서는 유닛테스트를 다음">
+<meta property="og:title" content="PHPUnit 1부 - 유닛 테스트를 시작 해보자">
+<meta property="og:url" content="http://njhyuk.github.io/2019/01/10/phpunit-start/">
+<meta property="og:site_name" content="JunHyuk&#39;s Dev Note">
+<meta property="og:description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기…">
 <meta property="og:locale" content="jo">
-<meta property="og:image" content="http://njhyuk.github.io/2019/01/10/phpunit-start/success.png">
-<meta property="og:image" content="http://njhyuk.github.io/2019/01/10/phpunit-start/fail.png">
-<meta property="og:updated_time" content="2019-01-10T05:28:52.478Z">
+<meta property="og:image" content="http://njhyuk.github.io/2019/01/10/phpunit-start/logo.png">
+<meta property="og:updated_time" content="2019-08-05T13:36:48.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="유닛 테스트를 시작 해보자">
-<meta name="twitter:description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다. 유닛 테스트위키 백과 에서는 유닛테스트를 다음">
-<meta name="twitter:image" content="http://njhyuk.github.io/2019/01/10/phpunit-start/success.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Njhyuk&#39;s Dev Note" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Njhyuk&#39;s Dev Note</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Develop Note</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://njhyuk.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-phpunit-start" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/10/phpunit-start/" class="article-date">
-  <time datetime="2019-01-10T05:28:52.478Z" itemprop="datePublished">2019-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      유닛 테스트를 시작 해보자
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>어플리케이션은 매우 방대하게 이루어져 있습니다.<br>보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.<br>이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다.</p>
+<meta name="twitter:title" content="PHPUnit 1부 - 유닛 테스트를 시작 해보자">
+<meta name="twitter:description" content="어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기…">
+<meta name="twitter:image" content="http://njhyuk.github.io/2019/01/10/phpunit-start/logo.png"><meta property="article:author" content="노준혁"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2019-01-10 14:28:52"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="노준혁"><link rel="icon" href="/images/logo.png"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="JunHyuk's Dev Note"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/logo.png" alt="JunHyuk's Dev Note"><span class="menu__item__link--brand__label">JunHyuk's Dev Note</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/archives">Archives</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">PHPUnit 1부 - 유닛 테스트를 시작 해보자</h1><div class="article__meta"><time class="article__meta__time" datetime="2019-01-10T05:28:52.478Z" itemprop="datePublished">2019-01-10 14:28:52</time></div><hr><div class="article__contents"><img src="/2019/01/10/phpunit-start/logo.png" title="source : https://codeburst.io/writing-php-unit-testing-friendly-code-5ef9a8a49da1">
+<p>어플리케이션은 매우 방대하게 이루어져 있습니다.<br>보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.<br>이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다.</p>
 <h2 id="유닛-테스트"><a href="#유닛-테스트" class="headerlink" title="유닛 테스트"></a>유닛 테스트</h2><p>위키 백과 에서는 유닛테스트를 다음과 같이 설명하고 있습니다.</p>
 <blockquote>
 <p>유닛 테스트(unit test)는 컴퓨터 프로그래밍에서 소스 코드의 특정 모듈이 의도된 대로 정확히 작동하는지 검증하는 절차다.<br>즉, 모든 함수와 메소드에 대한 테스트 케이스(Test case)를 작성하는 절차를 말한다.<br>이를 통해서 언제라도 코드 변경으로 인해 문제가 발생할 경우, 단시간 내에 이를 파악하고 바로 잡을 수 있도록 해준다. 이상적으로, 각 테스트 케이스는 서로 분리되어야 한다.<br>이를 위해 가짜 객체(Mock object)를 생성하는 것도 좋은 방법이다.<br>유닛 테스트는 (일반적인 테스트와 달리) 개발자(developer) 뿐만 아니라 보다 더 심도있는 테스트를 위해 테스터(tester)에 의해 수행되기도 한다.<br>쉽게 얘기해서 기능을 추가할때마다 작성한 유닛 테스트를 통해, 추가한 기능이 기존 기능들에 영향을 미쳐 오류가 발생하고 있는지 자동으로 테스트 할 수 있는 것입니다.</p>
@@ -111,121 +30,6 @@
 <p>그렇다면 테스트에 실패하면 어떻게 표현될까요? 다음과 같이 실패한 코드와 결과가 화면에 출력됩니다.</p>
 <img src="/2019/01/10/phpunit-start/fail.png" title="[fail]">
 <h2 id="마지막으로"><a href="#마지막으로" class="headerlink" title="마지막으로.."></a>마지막으로..</h2><p>오늘은 간단한 예제를 통해 단위테스트의 개념과 테스트 케이스를 생성하고 실행하는 법에 대해 알아보았습니다. 실제로 활용하기에 오늘의 내용으로는 아직 부족하지만, 소프트웨어 테스트를 위한 자동화에 대해 고민해 보게 된 시간 이였으면 좋겠습니다.<br>다음에 기회가 되면 phpunit의 기능에 대해 상세하게 알아보도록 하겠습니다.<br>감사합니다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://njhyuk.github.io/2019/01/10/phpunit-start/" data-id="cjw1n73zg0003jc5rm6zr53bv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/10/phpunit-methods/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          PHPUnit 메소드 알아보기
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/01/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/">Form 파일전송을 위해 enctype을 왜 지정해야 할까?</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/phpunit-methods/">PHPUnit 메소드 알아보기</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/phpunit-start/">유닛 테스트를 시작 해보자</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 노준혁<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
-</html>
+</div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar.jpg" alt="노준혁"><a class="article__author__link" title="About 노준혁" rel="author">노준혁</a><p class="article__author__desc">Software Engineer</p><div class="article__author__socials"><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="노준혁"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2019-08-05T13:36:48.686Z"><meta itemprop="articleBody" content="
+어플리케이션은 매우 방대하게 이루어져 있습니다.보기에는 간단한 기능을 추가 하더라도, 사용자 테스트를 진행하게 된다면 사용자는 개발자가 예상한 사용자의 접근 플로우와는 다르게 전혀 예상치 못한 방법으로 접근 하게 되고 오류가 발생하기 마련입니다.이러한 문제를 해결하기 위해 오늘은 유닛 테스트에 대해 알아봅시다.
+유닛 테스트위키 백과 에서는..."><meta itemprop="url" content="http://njhyuk.github.io/2019/01/10/phpunit-start/"><meta itemprop="mainEntityOfPage" content="http://njhyuk.github.io/2019/01/10/phpunit-start/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="JunHyuk's Dev Note"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://njhyuk.github.io/images/logo.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://njhyuk.github.io/images/default.jpg"><meta itemprop="url" content="http://njhyuk.github.io/images/default.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/2019/05/24/Why-should-I-specify-an-enctype-in-a-form/">Form 파일전송을 위해 enctype을 왜 지정해야 할까?</a></li><li class="recent-posts__item"><a href="/2019/01/10/phpunit-methods/">PHPUnit 2부 - 메소드 알아보기</a></li><li class="recent-posts__item"><a href="/2019/01/10/phpunit-start/">PHPUnit 1부 - 유닛 테스트를 시작 해보자</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3></div></div></div><p class="copyright"><small>© 2019 노준혁<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><script src="/js/sharer.min.js"></script></body></html>
